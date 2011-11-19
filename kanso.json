@@ -1,7 +1,7 @@
 {
     "name": "handlebars-helpers",
-    "version": "0.0.1",
-    "description": "Useful helpers for handlebars templates. Adds support for including templates by path and escaping uri components etc",
+    "version": "0.0.2",
+    "description": "Useful helpers for handlebars templates. Adds support for including templates by path, escaping uri components, ifequal tests etc",
     "dependencies": {
         "handlebars": ">=1.0.0"
     },
