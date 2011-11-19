@@ -2,9 +2,10 @@ Handlebars.registerHelper('uc', function (str) {
     return encodeURIComponent(str);
 });
 
-Handlebars.registerHelper('include', function (name, context) {
-    if (!handlebars.templates[name]) {
+// TODO: add optional context argument?
+Handlebars.registerHelper('include', function (name) {
+    if (!exports.templates[name]) {
         throw new Error('Template Not Found: ' + name);
     }
-    return handlebars.templates[name](context || this);
+    return exports.templates[name](this);
 });
