@@ -2,6 +2,10 @@ Handlebars.registerHelper('uc', function (str) {
     return encodeURIComponent(str);
 });
 
+Handlebars.registerHelper('first', function (arr) {
+    return arr[0];
+});
+
 // TODO: add optional context argument?
 Handlebars.registerHelper('include', function (name) {
     if (!exports.templates[name]) {
