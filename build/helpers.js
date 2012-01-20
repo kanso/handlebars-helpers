@@ -1,9 +1,36 @@
+_isFunction = function(obj) {
+    return !!(obj && obj.constructor && obj.call && obj.apply);
+};
+
 Handlebars.registerHelper('uc', function (str) {
     return encodeURIComponent(str);
 });
 
-Handlebars.registerHelper('first', function (arr) {
-    return arr[0];
+var head = function (arr, fn) {
+    if (_isFunction(fn)) {
+        // block helper
+        return fn(arr[0]);
+    }
+    else {
+        return arr[0];
+    }
+};
+
+Handlebars.registerHelper('first', head);
+Handlebars.registerHelper('head', head);
+
+Handlebars.registerHelper('tail', function (arr, fn) {
+    if (_isFunction(fn)) {
+        // block helper
+        var out = '';
+        for (var i = 1, len = arr.length; i < len; i++) {
+            out += fn(arr[i]);
+        }
+        return out;
+    }
+    else {
+        return arr.slice(1);
+    }
 });
 
 // TODO: add optional context argument?
